@@ -31,21 +31,25 @@ with tabs[0]:
         st.caption("Tip: Use messy, real-world language. The Reformulation Agent will translate it into a clean search query.")
 
     with colB:
+        # When Ask is clicked, call the backend and cache the latest result
         if ask and question.strip():
             try:
                 r = requests.post(f"{BACKEND_URL}/ask", json={"rep_id": rep_id, "question": question}, timeout=30)
                 r.raise_for_status()
-                data = r.json()
+                st.session_state["last_result"] = r.json()
             except Exception as e:
                 st.error(f"Backend error: {e}")
                 st.stop()
 
+        data = st.session_state.get("last_result")
+
+        if data:
             st.markdown("### Answer")
             st.write(data["answer"])
 
             confidence_badge(int(data["confidence"]))
 
-            with st.expander("🔎 Agent pipeline details (show this in demo)"):
+            with st.expander("🔎 Agent pipeline details"):
                 st.write(f"**Intent:** {data['intent']}")
                 st.code(data["reformulated_query"], language="text")
                 st.write(f"**Latency:** {data['latency_ms']} ms")
