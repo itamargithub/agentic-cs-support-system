@@ -8,11 +8,9 @@ def _env(name: str, default: str = "") -> str:
 
 class LLMClient:
     """
-    Minimal wrapper:
-    - If ANTHROPIC_API_KEY is present and AGENT_MODE != 'mock', you can wire real Claude calls.
-    - Default behavior is deterministic "mock" outputs to ensure the take-home runs without external dependencies.
-
-    In an interview, explain: "Swappable LLM provider via an interface; mocked for deterministic local runs."
+    Minimal LLM wrapper:
+    - If ANTHROPIC_API_KEY is present and AGENT_MODE != 'mock', it can be wired to real Claude calls.
+    - Default behavior is a deterministic \"mock\" mode so the system runs locally without external dependencies.
     """
     def __init__(self):
         self.mode = _env("AGENT_MODE", "auto")

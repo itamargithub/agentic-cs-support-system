@@ -1,0 +1,20 @@
+# Python virtual environments and caches
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+
+# OS / editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Local data and logs
+*.db
+*.sqlite
+*.log
+
+# RAG index artifacts
+backend/data/
+

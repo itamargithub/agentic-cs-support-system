@@ -1,6 +1,8 @@
-# Agentic Customer Service Support System (Take-Home)
+# Agentic Customer Service Support System
 
-This repo implements the take-home assignment pipeline:
+An end-to-end, agentic customer support assistant for banking contact centers. A Streamlit UI for representatives and managers talks to a FastAPI backend that orchestrates three agents (reformulation, RAG search, validation) over a small banking knowledge base, with all interactions logged to SQLite for reporting.
+
+This repo implements a multi-agent customer service support pipeline:
 
 **Rep question → Reformulation Agent → Search/RAG Agent → Validation Agent → Response + Confidence + Sources**
 
@@ -13,7 +15,7 @@ It includes:
   - Representative screen
   - Manager dashboard with meaningful metrics
 
-> Note: The assignment mentions "Claude Code". This project is structured so you can implement/iterate using Claude Code easily, and you can switch the agents to real Claude calls by setting `ANTHROPIC_API_KEY`.
+> The system is structured so you can iterate easily and switch the agents to real Claude calls by setting `ANTHROPIC_API_KEY`.
 
 ---
 
